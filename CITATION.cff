@@ -1,0 +1,22 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Scriptor
+message: Please cite this software using these metadata.
+type: software
+authors:
+  - name: Comfora Organization
+    alias: Comfora
+    email: community@comfora.org
+    website: 'https://comfora.org'
+repository-code: 'https://github.com/comfora/scriptor'
+url: 'https://comfora.org'
+abstract: >-
+  CLI tool designed for simple management of your local and
+  cloud environments tailored to your homelab or business
+  environments
+keywords:
+  - comfora
+  - scriptor
+license: MIT

@@ -1,0 +1,23 @@
+[project]
+name = "scriptor"
+version = "0.0.1"
+description = "Scriptor is a open-source CLI tool designed for simple management of your local and cloud environments tailored to your home-labs or business environments"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "rich>=14.2.0",
+    "typer>=0.20.0",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.6",
+    "ty>=0.0.1a27",
+]
+
+[project.scripts]
+scriptor = "scriptor.main:app"
+
+[build-system]
+requires = ["uv_build>=0.9.11,<0.10.0"]
+build-backend = "uv_build"
