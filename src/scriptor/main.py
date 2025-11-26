@@ -1,5 +1,5 @@
 import sys
-from importlib.metadata import metadata
+from importlib.metadata import PackageNotFoundError, metadata
 
 import typer
 from rich.console import Console
@@ -21,7 +21,13 @@ def version():
     """
     Showcases information about scriptor including API and package versions.
     """
-    pkg_metadata = metadata("scriptor")
+    try:
+        pkg_metadata = metadata("scriptor")
+    except PackageNotFoundError:
+        console.print(
+            "[red]Error: scriptor package not found. Please ensure it is installed.[/red]"
+        )
+        raise typer.Exit(code=1)
 
     table = Table(title="Scriptor Information", show_header=False)
     table.add_column("Property", style="cyan")
