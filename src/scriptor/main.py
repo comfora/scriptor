@@ -2,10 +2,11 @@ import json
 import typer
 import os
 import scriptor.project as project
+import sentry_sdk
 from rich import print
 from rich.panel import Panel
 from typing_extensions import Annotated
-from scriptor import __VERSION__, logger
+from scriptor import __VERSION__, logger, comforaConfig
 
 app = typer.Typer(no_args_is_help=True)
 app.add_typer(
@@ -13,6 +14,7 @@ app.add_typer(
     name="project",
     help="Subset of Scriptor commands related to project management.",
 )
+config = comforaConfig()
 
 
 @app.callback()
@@ -35,6 +37,29 @@ def callback(
         logger.add(sys.stderr, level="DEBUG")
         logger.debug("Verbose logging enabled.")
         logger.add("scriptor.log", rotation="50 MB", level="DEBUG")
+
+    sentry_config = comforaConfig().manage_setting("sentry")
+
+    if sentry_config is None or sentry_config.get("disabled") is True:
+        logger.info("Sentry error tracking is disabled in the configuration.")
+        return
+    else:
+        if sentry_config.get("environment") == "dev":
+            logger.debug("Sentry environment converted to `Dev`.")
+            comforaEnvironment = "Dev"
+        else:
+            logger.debug("Sentry environment converted to `Public`.")
+            comforaEnvironment = "Public"
+
+        sentry_sdk.init(
+            dsn=sentry_config.get("dsn"),
+            environment=comforaEnvironment,
+            traces_sample_rate=0.2,
+            send_default_pii=False,
+            release=__VERSION__,
+        )
+        logger.info("Sentry error tracking initialized.")
+
     logger.debug(f"Command invoked running {__VERSION__} version of Scriptor.")
 
 

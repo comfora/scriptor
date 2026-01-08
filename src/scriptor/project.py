@@ -8,7 +8,14 @@ app = typer.Typer(no_args_is_help=True)
 
 
 @app.command(name="validate")
-def validate(): ...
+def validate():
+    """
+    Ensures the project metadata is valid and your project is executable by Scriptor.
+    """
+
+    # with open("scriptor.json", "r") as f:
+    # localProject = json.load(f)
+    # logger.debug("Loaded local scriptor.json file for validation.")
 
 
 @app.command(name="showcase")
@@ -26,7 +33,6 @@ def showcase():
     print(
         Panel.fit(
             f"[bold magenta]{localProject.get('name', 'Unknown')}[/bold magenta] - {localProject.get('version', 'N/A')}\n{localProject.get('description', 'No description available.')}\nDeveloped by, [green]{localProject.get('developer', 'Anonymous')}[/green]",
-            title="Example Download",
         )
     )
 
