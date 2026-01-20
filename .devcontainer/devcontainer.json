@@ -15,8 +15,7 @@
 	"forwardPorts": [3000],
 	"portsAttributes": {
 		"3000": {
-		"label": "Mintlify Preview Server",
-		"onAutoForward": "openBrowser"
+		"label": "Mintlify Preview Server"
 		}
 	},
 

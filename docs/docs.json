@@ -9,46 +9,36 @@
   },
   "seo": {
     "metatags": {
-        "canonical": "https://scriptor.comfora.org"
+      "canonical": "https://scriptor.comfora.org"
     }
   },
   "favicon": "/favicon.ico",
   "navigation": {
-    "products": [
+    "versions": [
       {
-        "product": "Comfora",
-        "description": "Welcome to Comfora",
-        "icon": "campfire",
-        "groups": [
-        {
-          "group": "Bonfire",
-          "icon": "campfire",
-          "pages": [
-            "index"
-          ]
-        },
-        {
-          "group": "Organization Directory",
-          "icon": "building",
-          "pages": [
-            "about",
-            "sponsors"
-          ]
-        },
-        {
-          "group": "Guidelines & Policies",
-          "icon": "scale-balanced",
-          "pages": [
-            "guidelines/discord"
-          ]
-        }
-      ]
-      },
-      {
-        "product": "Comfora Scriptor",
-        "description": "CLI management tool for server environments",
-        "icon": "server",
-        "href": "https://scriptor.comfora.org"
+        "version": "Next",
+        "products": [
+          {
+            "product": "Comfora Scriptor",
+            "description": "CLI management tool for server environments",
+            "icon": "server",
+            "groups": [
+              {
+                "group": "Campgrounds",
+                "icon": "campground",
+                "pages": [
+                  "index"
+                ]
+              }
+            ]
+          },
+          {
+            "product": "Comfora",
+            "description": "Welcome to Comfora",
+            "icon": "campfire",
+            "href": "https://comfora.org"
+          }
+        ]
       }
     ],
     "global": {
@@ -75,7 +65,7 @@
       "mcp",
       "cursor",
       "vscode"
-  ]
+    ]
   },
   "footer": {
     "socials": {
@@ -124,7 +114,7 @@
   },
   "integrations": {
     "posthog": {
-        "apiKey": "phc_Hv0bBJPJPePtw9lCiEPgLWgbmxwGrLPRf7xaZWEwmzh"
+      "apiKey": "phc_Hv0bBJPJPePtw9lCiEPgLWgbmxwGrLPRf7xaZWEwmzh"
     }
   },
   "fonts": {
