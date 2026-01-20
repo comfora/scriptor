@@ -1,0 +1,139 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "maple",
+  "name": "Scriptor",
+  "colors": {
+    "primary": "#FFCC4D",
+    "light": "#FFCC4D",
+    "dark": "#B38000"
+  },
+  "seo": {
+    "metatags": {
+        "canonical": "https://scriptor.comfora.org"
+    }
+  },
+  "favicon": "/favicon.ico",
+  "navigation": {
+    "products": [
+      {
+        "product": "Comfora",
+        "description": "Welcome to Comfora",
+        "icon": "campfire",
+        "groups": [
+        {
+          "group": "Bonfire",
+          "icon": "campfire",
+          "pages": [
+            "index"
+          ]
+        },
+        {
+          "group": "Organization Directory",
+          "icon": "building",
+          "pages": [
+            "about",
+            "sponsors"
+          ]
+        },
+        {
+          "group": "Guidelines & Policies",
+          "icon": "scale-balanced",
+          "pages": [
+            "guidelines/discord"
+          ]
+        }
+      ]
+      },
+      {
+        "product": "Comfora Scriptor",
+        "description": "CLI management tool for server environments",
+        "icon": "server",
+        "href": "https://scriptor.comfora.org"
+      }
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Blog",
+          "href": "https://blog.comfora.org",
+          "icon": "newspaper"
+        }
+      ]
+    }
+  },
+  "logo": {
+    "light": "/logo/comfora.svg",
+    "dark": "/logo/comfora.svg"
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+  ]
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/comfora",
+      "discord": "https://comfora.org/discord",
+      "bluesky": "https://bsky.app/profile/comfora.org",
+      "x": "https://twitter.com/comforaorg",
+      "website": "https://mastodon.social/@comfora",
+      "reddit": "https://www.reddit.com/user/comforaorg/"
+    },
+    "links": [
+      {
+        "header": "Resources",
+        "items": [
+          {
+            "label": "Status Page",
+            "href": "https://status.comfora.org"
+          },
+          {
+            "label": "Blog",
+            "href": "https://blog.comfora.org"
+          }
+        ]
+      },
+      {
+        "header": "Projects",
+        "items": [
+          {
+            "label": "Comfora Scriptor",
+            "href": "https://scriptor.comfora.org"
+          },
+          {
+            "label": "Comfora Marketplace",
+            "href": "https://github.com/comfora-marketplace"
+          }
+        ]
+      }
+    ]
+  },
+  "appearance": {
+    "strict": true,
+    "default": "dark"
+  },
+  "background": {
+    "decoration": "gradient"
+  },
+  "integrations": {
+    "posthog": {
+        "apiKey": "phc_Hv0bBJPJPePtw9lCiEPgLWgbmxwGrLPRf7xaZWEwmzh"
+    }
+  },
+  "fonts": {
+    "family": "Roboto Slab"
+  },
+  "redirects": [
+    {
+      "source": "/discord",
+      "destination": "https://discord.gg/kd4JQSaKDP"
+    }
+  ]
+}
