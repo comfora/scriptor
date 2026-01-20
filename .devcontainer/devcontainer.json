@@ -1,23 +1,36 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-	"name": "Python 3",
+	"name": "Scriptor Development",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/python:2-3.12-bullseye",
 	"features": {
 		"ghcr.io/va-h/devcontainers-features/uv:1": {
 			"shellautocompletion": true,
 			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/node:1": {}
+	},
+
+	"forwardPorts": [3000],
+	"portsAttributes": {
+		"3000": {
+			"label": "Mintlify Preview Server"
 		}
 	},
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	"postCreateCommand": "export UV_LINK_MODE=copy && uv sync --dev && npm install -g mintlify",
 
-	"postCreateCommand": "export UV_LINK_MODE=copy && uv sync --dev"
-
-	// Configure tool-specific properties.
-	// "customizations": {},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"mintlify.mintlify-snippets",
+				"aaron-bond.better-comments",
+				"unifiedjs.vscode-mdx",
+				"streetsidesoftware.code-spell-checker"
+			]
+		}
+	}
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
