@@ -12,7 +12,7 @@ from loguru import logger
 __VERSION__ = version("scriptor")
 
 logger.remove()
-logger.add(sys.stderr, level="WARNING")
+logger.add(sys.stderr, level="ERROR")
 logger.add("scriptor.log", rotation="50 MB", level="DEBUG")
 
 CONFIG_JSON = {
@@ -21,6 +21,25 @@ CONFIG_JSON = {
         "environment": "",
         "dsn": "https://22ce5a484332162e4855845e9a8a0a55@o4509176688082944.ingest.us.sentry.io/4510610903597056",
     }
+}
+
+DISCLAIMERS = {
+    "": "[yellow]Warning:[/yellow] The developer, [DEVELOPER] has not provided any tags for this project.",
+    "alpha": "[yellow]Caution:[/yellow] This project is marked as alpha. It may contain unstable or experimental features.",
+    "beta": "[yellow]Caution:[/yellow] This project is marked as beta. It may contain unstable or experimental features.",
+    "freemium": "[yellow]Info:[/yellow] This project follows a freemium model. Some features may require payment or subscription for full access.",
+    "paid": "[yellow]Info:[/yellow] This project is a paid offering. Ensure you understand the pricing and licensing terms before use.",
+    "enterprise": "[yellow]Info:[/yellow] This project is designed for enterprise use. It may include features or requirements specific to business environments.",
+    "open-source": "[green]Good News:[/green] This project is open-source. You can review the source code and contribute to its development.",
+}
+
+PROJECT_JSON = {
+    "name": "example-scriptor-project",
+    "version": "0.1.0",
+    "developer": "Example Developer",
+    "description": "An example Scriptor project initialized using the CLI.",
+    "endpoint": "main.py",
+    "SCRIPTOR_API_VERSION": "v0",
 }
 
 
@@ -82,16 +101,13 @@ class comforaConfig:
                     config = {}
 
                 if value is not None:
-                    # Write mode: update the setting
                     config[setting] = value
                     f.seek(0)
                     json.dump(config, f, indent=4)
                     f.truncate()
                     logger.debug(f"Setting '{setting}' updated to '{value}'.")
-                    # Update in-memory config
                     self.configData[setting] = value
                 else:
-                    # Read mode: retrieve the setting
                     logger.debug(
                         f"Retrieving setting '{setting}': {config.get(setting)}"
                     )
@@ -111,7 +127,6 @@ def validate_url(url: str):
     Validates if a given URL is properly formatted and is reachable.
     """
     try:
-        # HEAD request is faster and doesn't download the full content
         response = requests.head(url, allow_redirects=True, timeout=5)
 
         # Consider the URL working if status code is in the 200–399 range

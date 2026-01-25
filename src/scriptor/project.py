@@ -2,7 +2,7 @@ import typer
 import json
 from rich import print
 from rich.panel import Panel
-from scriptor import logger
+from scriptor import logger, DISCLAIMERS
 
 app = typer.Typer(no_args_is_help=True)
 
@@ -43,21 +43,16 @@ def showcase():
     except Exception as e:
         logger.error(f"Error retrieving tags from scriptor.json: {e}")
         tags = []
-    disclaimers = {
-        "": "[yellow]Warning:[/yellow] This project is not marked with any tags. Consider adding tags to improve discoverability and functionality.",
-        "alpha": "[yellow]Caution:[/yellow] This project is marked as alpha. It may contain unstable or experimental features.",
-        "3rd-party": "[yellow]Note:[/yellow] This project contains services or features developed by third-party contributors. Ensure you trust the source before use.",
-        "freemium": "[yellow]Info:[/yellow] This project follows a freemium model. Some features may require payment or subscription for full access.",
-        "paid": "[yellow]Info:[/yellow] This project is a paid offering. Ensure you understand the pricing and licensing terms before use.",
-        "enterprise": "[yellow]Info:[/yellow] This project is designed for enterprise use. It may include features or requirements specific to business environments.",
-        "open-source": "[green]Good News:[/green] This project is open-source. You can review the source code and contribute to its development.",
-    }
 
-    for tag, message in disclaimers.items():
+    for tag, message in DISCLAIMERS.items():
         if tag == "" and not tags:
+            if "[DEVELOPER]" in message:
+                message = message.replace("[DEVELOPER]", localProject.get("developer"))
             logger.warning("No tags found; adding general disclaimer.")
             additionalDisclaimers.append(message)
         elif tag in tags:
+            if "[DEVELOPER]" in message:
+                message = message.replace("[DEVELOPER]", localProject.get("developer"))
             logger.info(f"Tag '{tag}' found; adding corresponding disclaimer.")
             additionalDisclaimers.append(message)
 

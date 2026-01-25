@@ -6,7 +6,7 @@ import sentry_sdk
 from rich import print
 from rich.panel import Panel
 from typing_extensions import Annotated
-from scriptor import __VERSION__, logger, comforaConfig
+from scriptor import __VERSION__, logger, comforaConfig, CONFIG_JSON
 
 app = typer.Typer(no_args_is_help=True)
 app.add_typer(
@@ -83,16 +83,8 @@ def initialize(
     """
     Initializes a Scriptor project by setting up necessary configurations and directories.
     """
-    jsonContent = {
-        "name": "example-scriptor-project",
-        "version": "0.1.0",
-        "developer": "Example Developer",
-        "description": "An example Scriptor project initialized using the CLI.",
-        "endpoint": "main.py",
-        "SCRIPTOR_API_VERSION": "v0",
-    }
     logger.debug(
-        f"Prepped API version {jsonContent['SCRIPTOR_API_VERSION']} for project initialization."
+        f"Prepped API version {CONFIG_JSON['SCRIPTOR_API_VERSION']} for project initialization."
     )
 
     if os.path.exists("scriptor.json") and not override:
@@ -103,10 +95,10 @@ def initialize(
         return
     with open("scriptor.json", "w") as file:
         logger.info("Creating scriptor.json configuration file.")
-        file.write(json.dumps(jsonContent, indent=4))
+        file.write(json.dumps(CONFIG_JSON, indent=4))
 
     print(
-        "Scriptor compatible project created.\n"
+        f"Scriptor v{CONFIG_JSON['SCRIPTOR_API_VERSION']} compatible project created.\n"
         "Note that Scriptor is still [yellow]under development[/yellow], some features may not work as expected and major changes are expected."
     )
     return
