@@ -5,8 +5,22 @@
 # https://containers.dev/guide/dependabot
 
 version: 2
+
+multi-ecosystem-groups:
+  python:
+    schedule:
+      interval: "daily"
+
 updates:
- - package-ecosystem: "devcontainers"
-   directory: "/"
-   schedule:
-     interval: weekly
+  - package-ecosystem: "pip"
+    directory: "/"
+    multi-ecosystem-group: python
+    patterns: ["*"]
+  - package-ecosystem: "uv"
+    directory: "/"
+    multi-ecosystem-group: python
+    patterns: ["*"]
+  - package-ecosystem: "devcontainers"
+    directory: "/"
+    schedule:
+      interval: weekly
