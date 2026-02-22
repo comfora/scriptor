@@ -2,7 +2,7 @@
 
 Scriptor is an open-source CLI tool designed for simple management of your local and cloud environments tailored to your homelabs or business environments.
 
-Ranging from simple installs of VPNs or proxies to complex security configurations, Scriptor is designed to be a simple and easy to use tool for managing your environments. All in one installable Python package.
+Ranging from simple installations of VPNs or proxies to complex security configurations, Scriptor is designed to be a simple and easy to use tool for managing your environments. All in one installable Python package.
 
 <!-- ## Installation
 
@@ -11,6 +11,10 @@ Scriptor is a python package at heart, meaning you can install it from **PyPi** 
 ```bash
 pip install comfora-scriptor
 ``` -->
+
+## Sponsors
+
+Comfora is funded only be the community and support of other organizations. If you would like to support our work and ensure the longevity of this project, please consider becoming a sponsor. [*Learn more about sponsoring Comfora.*](https://comfora.org/sponsors)
 
 ## License
 
